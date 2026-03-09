@@ -36,4 +36,13 @@ public class Anagrams {
                 anagrams.get(sig).add(word);
             }
         }
+reader.close();
 
+
+        for (List<String> group : anagrams.values()) {
+            if (group.size() > 1) {
+                System.out.println(group);
+            }
+        }
+    }
+}
