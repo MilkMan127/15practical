@@ -44,5 +44,36 @@ reader.close();
                 System.out.println(group);
             }
         }
+         BufferedWriter writer = new BufferedWriter(new FileWriter("theAnagrams.tex"));
+
+        char currentLetter = 0;
+
+        for (List<String> group : anagrams.values()) {
+
+            if (group.size() > 1) {
+
+                Collections.sort(group);
+
+                char firstLetter = group.get(0).charAt(0);
+
+                if (firstLetter != currentLetter) {
+                    currentLetter = firstLetter;
+
+                    writer.write("\n\\vspace{14pt}\n");
+                    writer.write("\\noindent\\textbf{\\Large " +
+                            Character.toUpperCase(firstLetter) +
+                            "}\\\\*[+12pt]\n");
+                }
+
+                writer.write(String.join(" ", group) + "\\\\\n");
+            }
+        }
+
+        writer.close();
+
+        System.out.println("theAnagrams.tex file created.");
+    }
+}
+
     }
 }
